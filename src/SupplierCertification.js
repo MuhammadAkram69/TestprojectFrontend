@@ -1,7 +1,8 @@
 import React from 'react'
 import Checkboxcomponent from './Checkboxcomponent'
 
-export default function SupplierCertification() {
+export default function SupplierCertification({setIsDuns, filters,supplierCert}) {
+  console.log("---------------",supplierCert);
   return (
     <div className='Pmain-div'>
     <p>Supplier Certification</p>
@@ -32,7 +33,7 @@ export default function SupplierCertification() {
           </div>
         </div>
      </div> */}
-     <Checkboxcomponent valuarray={["DUNS", "DRS", "BSCI"]}/>
+     <Checkboxcomponent setIsDuns={setIsDuns} filters={filters}/>
 </div>
   )
 }

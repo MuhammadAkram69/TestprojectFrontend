@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiCategory } from "react-icons/bi";
 import axios from "axios";
+// import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function SearchBarComponent() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
+  const [showCatgory,setCatgory] = useState(false); //for toggling category button
+
+  useEffect(()=>{
+    handleSearch();
+  },[]);
 
   const handleSearch = async () => {
     try {
@@ -14,7 +21,7 @@ export default function SearchBarComponent() {
           params: {
             search: searchTerm,
             category: selectedCategory,
-          },
+          }
         }
       );
       setCategories(response.data);
@@ -35,7 +42,7 @@ export default function SearchBarComponent() {
   return (
     <div className="main-container">
       <div className="container">
-        <div className="left-c-button">
+        <div className="left-c-button" onClick={()=>setCatgory(!showCatgory)}>
           <i className="icon">
             <BiCategory />
           </i>
@@ -54,36 +61,56 @@ export default function SearchBarComponent() {
             onChange={handleCategoryChange}
           >
             <option value="">All Categories</option>
-            <option className="Catdrop" value="ppe">
-              {" "}
-              PPE{" "}
+            <option className="Catdrop" value={selectedCategory}>
+            {selectedCategory}
             </option>
-            <option className="Catdrop" value="wellness">
+            <option className="Catdrop" value={selectedCategory}>
               {" "}
               Wellness{" "}
             </option>
-            <option className="Catdrop" value="home_decor">
+            <option className="Catdrop" value={selectedCategory}>
               {" "}
               Home Decor{" "}
             </option>
-            <option className="Catdrop" value="miscellaneous">
+            <option className="Catdrop" value={selectedCategory}>
               {" "}
               Miscellaneous{" "}
             </option>
           </select>
         </div>
-        <div className="searchbutton" onClick={handleSearch}>
+        <div className="searchbutton" onClick={handleSearchTermChange}
+>
           <span>Search</span>
-          <i></i>
+          {/* <i></i> */}
         </div>
       </div>
-      <div className="category-container">
+      {showCatgory && <div className="category-container">
         {categories.map((category) => (
           <div key={category.id} className="category">
-            <span>{category.title}</span>
+            
+               <span>
+                <Link to={`/${category.title}`}>
+                 {category.title}
+                 </Link>
+                 </span>
+              
+            {category.subcatagories.map((subcatgory)=>{
+              return(
+                <div className="subcategory">
+                   
+                     <span>
+                     <Link to={`/${subcatgory.name}`}>
+                       {subcatgory.name}
+                       </Link>
+                       </span>
+                     
+                </div>
+              )
+            }
+            )}
           </div>
         ))}
-      </div>
+      </div>}
     </div>
   );
 }

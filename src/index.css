@@ -23,6 +23,7 @@ code {
   border-radius: 10px;
   margin-top: 15px;
   margin-bottom: 20px;
+  position: relative;
 }
 .container{
   display: flex;
@@ -48,7 +49,7 @@ code {
   padding: 10px;
   border-radius: 50px;
   width: 650px;  
-  flex-grow: 1;
+  outline: none;
 }
 .input-div>input{
   flex:1;
@@ -62,6 +63,7 @@ code {
   border-left: 1px solid gray;
   border-radius: 50px;
   color: rgb(118, 118, 118),;
+  outline: none;
 }
 .searchbutton{
   color: white;
@@ -72,6 +74,43 @@ code {
   background-color: #39b2c9;
 }
 
+
+
+/* ///////////CSS FOR TOP SEARCHBAR SUBCATEGORIES  Menu show onclick left side//////////// */
+.category-container{
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 25px;
+
+}
+.category>span>a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.subcategory{
+  background-color: #f2f2f2;
+  padding: 5px;
+  margin-left: 10px;
+  /* z-index: 1; */
+
+}
+.subcategory:hover{
+  color: green;
+}
+
+.subcategory>span>a{
+  text-decoration: none;
+  color: black;
+  font-weight: 400;
+}
 /* ////Responsiveness///////////////// */
 
 /* @media  screen and (max-width: 1400px) {
