@@ -1,16 +1,15 @@
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './NavBar';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import MainContainerComponent from './MainContainerComponent';
-import ProductContext from "./ProdectContex";
+// import ProductContext from "./ProductContextProvider";
 
 
 
 function App() {
   return (
-    <ProductContext>
+    // <ProductContext>
       <Router>
         <div className="App">
           <Navbar />
@@ -23,8 +22,8 @@ function App() {
           </Routes>
 
         </div>
-      </Router>
-    </ProductContext>
+      </Router>,
+    {/* </ProductContext> */}
   );
 }
 

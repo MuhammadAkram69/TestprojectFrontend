@@ -17,7 +17,7 @@ export default function ProductList({products, isDuns}) {
     return false;
   }
  
-  if(! products) return <div>Loading</div>
+  if(!products) return <div>Loading</div>
 
   return (
     <div>
